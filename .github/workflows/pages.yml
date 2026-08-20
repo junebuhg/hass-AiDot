@@ -1,0 +1,64 @@
+# Publishes the Séliš-Ql̓ispé Sounds app to GitHub Pages.
+#
+# The app is served at the site root, so the published URL is
+# https://<owner>.github.io/<repo>/ rather than /salish-alphabet/.
+#
+# `enablement: true` below turns the Pages site on the first time this runs, so
+# there is no need to switch it on by hand beforehand.
+
+name: Publish Salish alphabet app
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'salish-alphabet/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the alphabet data is valid
+        run: python3 -c "import json; json.load(open('salish-alphabet/data/alphabet.json'))"
+
+      - name: Report which clips are still missing
+        # Exits non-zero while clips are outstanding, which is the normal state
+        # during recording — report it without failing the build.
+        run: python3 tools/check_media.py || true
+        working-directory: salish-alphabet
+
+  deploy:
+    needs: check
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: salish-alphabet
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

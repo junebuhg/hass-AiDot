@@ -21,9 +21,28 @@ reading `data/alphabet.json` over `file://`. The app says so if that happens.
 
 ## Publishing it
 
-Any static host works. For GitHub Pages: repository **Settings → Pages →
-Deploy from a branch**, pick the branch and the `/ (root)` folder. The app is
-then at `https://<user>.github.io/<repo>/salish-alphabet/`.
+`.github/workflows/pages.yml` publishes this folder to GitHub Pages on every
+push to `main` that touches it. It validates `data/alphabet.json` first, so a
+typo in the data file cannot take the live site down, and it turns the Pages
+site on by itself the first time it runs.
+
+To go live: merge to `main`, then **Actions → Publish Salish alphabet app**,
+where the run reports the published URL. The app is served at the site root —
+`https://<user>.github.io/<repo>/`.
+
+If you would rather not use Actions, **Settings → Pages → Deploy from a branch**
+with the `/ (root)` folder also works; the app is then at
+`https://<user>.github.io/<repo>/salish-alphabet/`.
+
+### Size limits worth knowing before the videos arrive
+
+GitHub Pages allows **100 MB per file** and about **1 GB per site**, with a soft
+100 GB/month bandwidth limit. Eighty-eight clips at 720p should fit comfortably,
+but if the recordings come back large, compress them before committing — and if
+the folder ever approaches the limit, move the videos to a media host and put
+full URLs in the data file instead. Git also keeps every version of a binary
+file forever, so re-committing recut videos repeatedly will bloat the repository;
+prefer to get a clip right before committing it.
 
 ## Adding the videos
 
