@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Séliš-Ql̓ispé Sounds</title>
+<meta name="description" content="Tap a letter of the Séliš-Ql̓ispé alphabet to watch a speaker show how the sound is made.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <h1><span class="title-salish">Séliš-Ql̓ispé</span> <span class="title-sub">Sounds of the Alphabet</span></h1>
+    <p class="tagline">Tap a letter to watch how the sound is made.</p>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+
+  <!-- ============ GRID VIEW ============ -->
+  <section id="view-grid">
+    <div class="controls">
+      <label class="search">
+        <span class="visually-hidden">Search letters</span>
+        <input type="search" id="search" placeholder="Search a letter or sound…" autocomplete="off" spellcheck="false">
+      </label>
+      <div class="filters" id="filters" role="group" aria-label="Filter by group"></div>
+    </div>
+
+    <div id="grid-groups"></div>
+
+    <p class="empty" id="empty" hidden>No letters match that search.</p>
+  </section>
+
+  <!-- ============ DETAIL VIEW ============ -->
+  <section id="view-detail" hidden>
+    <div class="detail-nav">
+      <button type="button" class="btn btn-back" id="back">← All letters</button>
+      <div class="detail-nav-arrows">
+        <button type="button" class="btn btn-arrow" id="prev-letter" title="Previous letter">←</button>
+        <button type="button" class="btn btn-arrow" id="next-letter" title="Next letter">→</button>
+      </div>
+    </div>
+
+    <div class="detail-head">
+      <div class="detail-letter" id="detail-letter" aria-hidden="true"></div>
+      <div class="detail-meta">
+        <p class="detail-ipa" id="detail-ipa"></p>
+        <p class="detail-category" id="detail-category"></p>
+        <p class="detail-example" id="detail-example" hidden></p>
+      </div>
+    </div>
+
+    <div class="howto">
+      <h2>How to make this sound</h2>
+      <p id="detail-howto"></p>
+      <p class="watchfor" id="detail-watchfor"></p>
+    </div>
+
+    <div class="playback" role="group" aria-label="Playback options">
+      <span class="playback-label">Speed</span>
+      <div class="speeds" id="speeds"></div>
+      <label class="toggle">
+        <input type="checkbox" id="loop-toggle" checked>
+        <span>Loop</span>
+      </label>
+      <button type="button" class="btn btn-replay" id="replay">Play both again</button>
+    </div>
+
+    <div class="videos" id="videos"></div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p id="review-banner" class="review-banner"></p>
+    <p class="credit">Made for Séliš-Ql̓ispé language learners. Video clips are the property of the speakers and the community.</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

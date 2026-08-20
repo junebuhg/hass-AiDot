@@ -1,0 +1,389 @@
+/* Séliš-Ql̓ispé Sounds — styles
+   Font stack leads with fonts that render Salish combining diacritics
+   (q̓, x̌ʷ, ʕ̓ʷ) correctly. Install Charis SIL for the best result. */
+
+/* Optional: vendor Charis SIL so the diacritics render identically everywhere,
+   including on machines with no SIL font installed and with no network.
+   Download Charis SIL (SIL Open Font License) from https://software.sil.org/charis/,
+   put the .woff2 files in salish-alphabet/fonts/, and uncomment this block.
+
+@font-face {
+  font-family: "Charis SIL";
+  src: url("fonts/CharisSIL-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Charis SIL";
+  src: url("fonts/CharisSIL-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+*/
+
+:root {
+  --bg: #f6f1e7;
+  --surface: #fffdf8;
+  --ink: #241d16;
+  --ink-soft: #5b5044;
+  --line: #ddd0bb;
+  --accent: #7a4b2a;
+  --accent-soft: #f0e2d1;
+  --accent-ink: #ffffff;
+  --focus: #1c6fb4;
+  --radius: 14px;
+  --shadow: 0 1px 2px rgba(36, 29, 22, .07), 0 6px 18px rgba(36, 29, 22, .06);
+  --salish-font: "Charis SIL", "Doulos SIL", "Gentium Plus", "Gentium Book Plus",
+                 "Brill", "Lucida Sans Unicode", "Segoe UI", "DejaVu Sans", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #171310;
+    --surface: #221c17;
+    --ink: #f3ece2;
+    --ink-soft: #bdb0a1;
+    --line: #3b322a;
+    --accent: #e0a877;
+    --accent-soft: #35291f;
+    --accent-ink: #1a140f;
+    --focus: #79b8f0;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 6px 18px rgba(0, 0, 0, .3);
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+}
+
+.wrap { width: min(1080px, 100% - 2rem); margin-inline: auto; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ---------- header ---------- */
+
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  padding: 1.6rem 0 1.3rem;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.title-salish { font-family: var(--salish-font); color: var(--accent); }
+
+.title-sub {
+  display: block;
+  font-size: .62em;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.tagline { margin: .5rem 0 0; color: var(--ink-soft); }
+
+/* ---------- controls ---------- */
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  align-items: center;
+  margin: 1.5rem 0 1.25rem;
+}
+
+.search { flex: 1 1 15rem; }
+
+.search input {
+  width: 100%;
+  padding: .7rem .9rem;
+  font: inherit;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.filters { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+.chip {
+  font: inherit;
+  font-size: .9rem;
+  padding: .45rem .85rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.chip[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+/* ---------- grid ---------- */
+
+.group { margin-bottom: 2.25rem; }
+
+.group h2 {
+  margin: 0 0 .2rem;
+  font-size: 1.05rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.group p.group-desc {
+  margin: 0 0 .9rem;
+  color: var(--ink-soft);
+  font-size: .95rem;
+  max-width: 60ch;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: .7rem;
+}
+
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .15rem;
+  min-height: 96px;
+  padding: .6rem .3rem .5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  transition: transform .12s ease, border-color .12s ease;
+}
+
+.tile:hover { transform: translateY(-2px); border-color: var(--accent); }
+.tile:active { transform: translateY(0); }
+
+.tile .glyph {
+  font-family: var(--salish-font);
+  font-size: 2.4rem;
+  line-height: 1.15;
+  /* combining marks need headroom so they are never clipped */
+  padding-top: .12em;
+}
+
+.tile .glyph-ipa {
+  font-size: .78rem;
+  color: var(--ink-soft);
+}
+
+.tile.is-glottalized::after {
+  content: "";
+  position: absolute;
+  inset-inline: .55rem;
+  bottom: .35rem;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--accent);
+  opacity: .55;
+}
+
+.empty { color: var(--ink-soft); }
+
+/* ---------- detail ---------- */
+
+.detail-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.25rem 0 1rem;
+}
+
+.detail-nav-arrows { display: flex; gap: .5rem; }
+
+.btn {
+  font: inherit;
+  padding: .55rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.btn:hover { border-color: var(--accent); }
+.btn[disabled] { opacity: .4; cursor: default; }
+.btn-arrow { min-width: 3rem; }
+
+.detail-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.detail-letter {
+  font-family: var(--salish-font);
+  font-size: clamp(3.5rem, 13vw, 5.5rem);
+  line-height: 1.1;
+  padding-top: .1em;
+  color: var(--accent);
+}
+
+.detail-meta p { margin: .15rem 0; }
+.detail-ipa { font-size: 1.1rem; color: var(--ink-soft); }
+.detail-category { font-size: .9rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-soft); }
+.detail-example { font-family: var(--salish-font); font-size: 1.15rem; }
+
+.howto { margin-top: 1.5rem; max-width: 65ch; }
+.howto h2 { font-size: 1.05rem; text-transform: uppercase; letter-spacing: .04em; color: var(--accent); margin-bottom: .3rem; }
+.howto p { margin: .4rem 0; }
+.watchfor { color: var(--ink-soft); font-style: italic; }
+
+/* ---------- playback controls ---------- */
+
+.playback {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .6rem;
+  margin: 1.5rem 0 1rem;
+  padding: .75rem;
+  background: var(--accent-soft);
+  border-radius: var(--radius);
+}
+
+.playback-label { font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-soft); }
+.speeds { display: flex; gap: .4rem; }
+
+.speed {
+  font: inherit;
+  font-size: .9rem;
+  padding: .35rem .7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.speed[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+.toggle { display: inline-flex; align-items: center; gap: .35rem; font-size: .9rem; cursor: pointer; }
+.btn-replay { margin-inline-start: auto; }
+
+/* ---------- videos ---------- */
+
+.videos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.clip {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.clip h3 {
+  margin: 0;
+  padding: .7rem 1rem;
+  font-size: .95rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.clip h3 .speaker-name { color: var(--ink-soft); font-weight: 400; }
+
+.clip video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #000;
+  object-fit: cover;
+}
+
+.clip .missing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+  aspect-ratio: 4 / 3;
+  padding: 1rem;
+  text-align: center;
+  color: var(--ink-soft);
+  background: repeating-linear-gradient(45deg,
+      transparent, transparent 12px,
+      rgba(122, 75, 42, .05) 12px, rgba(122, 75, 42, .05) 24px);
+}
+
+.clip .missing strong { color: var(--ink); font-weight: 600; }
+.clip .missing code { font-size: .85rem; word-break: break-all; }
+
+/* ---------- footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 1.25rem 0 2.5rem;
+  color: var(--ink-soft);
+  font-size: .9rem;
+}
+
+.review-banner {
+  margin: 0 0 .5rem;
+  padding: .6rem .8rem;
+  border-inline-start: 4px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--ink);
+}
+
+.review-banner:empty { display: none; }
+.credit { margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

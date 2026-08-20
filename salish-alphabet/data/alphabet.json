@@ -1,0 +1,475 @@
+{
+  "language": "Séliš-Ql̓ispé",
+  "languageEnglish": "Montana Salish / Salish-Pend d'Oreille",
+  "reviewStatus": "DRAFT — the letter list, ordering, and articulation notes below have NOT yet been confirmed by a fluent speaker or linguist. Confirm before classroom use.",
+  "videoDir": "videos",
+  "videoExtensions": ["mp4", "webm"],
+  "speakers": {
+    "female": { "label": "Female speaker", "name": "" },
+    "male": { "label": "Male speaker", "name": "" }
+  },
+  "categories": [
+    {
+      "id": "stops",
+      "name": "Stops & Affricates",
+      "description": "The air is stopped completely somewhere in the mouth, then released."
+    },
+    {
+      "id": "fricatives",
+      "name": "Fricatives",
+      "description": "The air is squeezed through a narrow gap and hisses or rushes."
+    },
+    {
+      "id": "resonants",
+      "name": "Resonants",
+      "description": "The voice keeps running through the sound. Each one has a glottalized partner."
+    },
+    {
+      "id": "vowels",
+      "name": "Vowels",
+      "description": "The mouth is open and the voice shapes the sound."
+    }
+  ],
+  "letters": [
+    {
+      "id": "p",
+      "letter": "p",
+      "ipa": "p",
+      "category": "stops",
+      "glottalized": false,
+      "howTo": "Bring both lips together so the air stops completely, then open them and let the air out. Like the p in \"spin\" — no puff of breath after it.",
+      "watchFor": "Watch the lips press flat together, then part cleanly.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "p-ej",
+      "letter": "p̓",
+      "ipa": "pʼ",
+      "category": "stops",
+      "glottalized": true,
+      "howTo": "Close both lips and close your throat at the same time. Push the trapped air up with your voice box, then pop the lips open. It comes out as a sharp little pop, not a puff.",
+      "watchFor": "Watch the throat tighten before the lips release — the pop is louder and shorter than plain p.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "t",
+      "letter": "t",
+      "ipa": "t",
+      "category": "stops",
+      "glottalized": false,
+      "howTo": "Press the tip of the tongue against the ridge just behind the upper teeth, stop the air, then release it.",
+      "watchFor": "Watch the tongue tip come forward to the teeth ridge.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "t-ej",
+      "letter": "t̓",
+      "ipa": "tʼ",
+      "category": "stops",
+      "glottalized": true,
+      "howTo": "Set the tongue tip behind the upper teeth and close your throat at the same time. Squeeze the trapped air, then release the tongue for a sharp popping t.",
+      "watchFor": "The jaw stays still while the throat does the work.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "c",
+      "letter": "c",
+      "ipa": "ts",
+      "category": "stops",
+      "glottalized": false,
+      "howTo": "Say the ts at the end of \"cats\". The tongue tip stops the air behind the teeth, then releases into a hiss.",
+      "watchFor": "Teeth stay close together through the whole sound.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "c-ej",
+      "letter": "c̓",
+      "ipa": "tsʼ",
+      "category": "stops",
+      "glottalized": true,
+      "howTo": "Make the ts sound, but close your throat first and squeeze the air upward, so it snaps out sharply.",
+      "watchFor": "Listen for the snap — the hiss is much shorter than plain c.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "ch",
+      "letter": "č",
+      "ipa": "tʃ",
+      "category": "stops",
+      "glottalized": false,
+      "howTo": "Say the ch in \"church\". The tongue blade stops the air just behind the teeth ridge, then releases into a sh sound.",
+      "watchFor": "The lips push forward slightly.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "ch-ej",
+      "letter": "č̓",
+      "ipa": "tʃʼ",
+      "category": "stops",
+      "glottalized": true,
+      "howTo": "Make the ch sound with the throat closed, squeezing the trapped air so it bursts out sharply.",
+      "watchFor": "Watch the throat move up just before the release.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "kw",
+      "letter": "kʷ",
+      "ipa": "kʷ",
+      "category": "stops",
+      "glottalized": false,
+      "howTo": "Raise the back of the tongue to the soft palate and round the lips at the same time, like the qu in \"quick\".",
+      "watchFor": "The lips round before the sound is released — the rounding is part of the letter.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "kw-ej",
+      "letter": "k̓ʷ",
+      "ipa": "kʷʼ",
+      "category": "stops",
+      "glottalized": true,
+      "howTo": "Set up the rounded kʷ, close the throat, squeeze the air, then release it sharply.",
+      "watchFor": "Rounded lips plus a sharp popping release.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "q",
+      "letter": "q",
+      "ipa": "q",
+      "category": "stops",
+      "glottalized": false,
+      "howTo": "Like k, but much farther back. The very back of the tongue presses against the uvula, deep in the throat.",
+      "watchFor": "The jaw drops a little and the sound is deeper and duller than k.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "q-ej",
+      "letter": "q̓",
+      "ipa": "qʼ",
+      "category": "stops",
+      "glottalized": true,
+      "howTo": "Make the deep q closure, close the throat below it, squeeze, and release with a sharp pop.",
+      "watchFor": "The whole throat lifts before the release.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "qw",
+      "letter": "qʷ",
+      "ipa": "qʷ",
+      "category": "stops",
+      "glottalized": false,
+      "howTo": "Make the deep q sound while rounding the lips at the same time.",
+      "watchFor": "Lips round while the sound stays deep in the throat.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "qw-ej",
+      "letter": "q̓ʷ",
+      "ipa": "qʷʼ",
+      "category": "stops",
+      "glottalized": true,
+      "howTo": "Rounded lips, deep q closure, closed throat — squeeze the air and pop it out.",
+      "watchFor": "Rounding plus the sharp deep pop.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "glottal",
+      "letter": "ʔ",
+      "ipa": "ʔ",
+      "category": "stops",
+      "glottalized": true,
+      "howTo": "Close your throat and cut the sound off completely. It is the catch in the middle of \"uh-oh\".",
+      "watchFor": "Nothing moves in the mouth — all the work is in the throat.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "s",
+      "letter": "s",
+      "ipa": "s",
+      "category": "fricatives",
+      "glottalized": false,
+      "howTo": "Tongue tip near the ridge behind the upper teeth, teeth close together, and let the air hiss through.",
+      "watchFor": "Teeth nearly touching, lips spread.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "lh",
+      "letter": "ł",
+      "ipa": "ɬ",
+      "category": "fricatives",
+      "glottalized": false,
+      "howTo": "Put your tongue where you would for l — tip on the ridge behind the teeth — but instead of using your voice, blow air out over the sides of the tongue.",
+      "watchFor": "The tongue tip stays up the whole time; the air escapes around the sides, not the middle.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "sh",
+      "letter": "š",
+      "ipa": "ʃ",
+      "category": "fricatives",
+      "glottalized": false,
+      "howTo": "Say the sh in \"ship\". The tongue blade is a little farther back than for s and the lips push forward.",
+      "watchFor": "Lips rounded and pushed forward.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "xw",
+      "letter": "xʷ",
+      "ipa": "xʷ",
+      "category": "fricatives",
+      "glottalized": false,
+      "howTo": "Raise the back of the tongue toward the soft palate, round the lips, and blow — like blowing out a candle with a whispered wh.",
+      "watchFor": "Steady rounded lips with a continuous rush of air.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "xh",
+      "letter": "x̌",
+      "ipa": "χ",
+      "category": "fricatives",
+      "glottalized": false,
+      "howTo": "Pull the back of the tongue toward the uvula and let the air rasp past it. It sounds like gently clearing the throat.",
+      "watchFor": "The mouth is fairly open — the sound is made deep in the throat, not at the lips.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "xhw",
+      "letter": "x̌ʷ",
+      "ipa": "χʷ",
+      "category": "fricatives",
+      "glottalized": false,
+      "howTo": "Make the deep rasping x̌ sound while rounding the lips at the same time.",
+      "watchFor": "Rounded lips with the rasp still coming from the throat.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "h",
+      "letter": "h",
+      "ipa": "h",
+      "category": "fricatives",
+      "glottalized": false,
+      "howTo": "Open the mouth and breathe out, letting the air brush past the open throat.",
+      "watchFor": "The mouth is already in position for the next vowel.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "m",
+      "letter": "m",
+      "ipa": "m",
+      "category": "resonants",
+      "glottalized": false,
+      "howTo": "Close both lips and hum — the voice comes out through the nose.",
+      "watchFor": "Lips stay shut and the sound keeps going.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "m-glot",
+      "letter": "m̓",
+      "ipa": "mˀ",
+      "category": "resonants",
+      "glottalized": true,
+      "howTo": "Hum the m, but squeeze your throat closed in the middle of it so the hum is pinched or interrupted.",
+      "watchFor": "The lips do not move — the catch happens in the throat.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "n",
+      "letter": "n",
+      "ipa": "n",
+      "category": "resonants",
+      "glottalized": false,
+      "howTo": "Tongue tip on the ridge behind the upper teeth, voice running out through the nose.",
+      "watchFor": "Mouth slightly open, tongue tip up.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "n-glot",
+      "letter": "n̓",
+      "ipa": "nˀ",
+      "category": "resonants",
+      "glottalized": true,
+      "howTo": "Make the n sound and squeeze the throat closed during it, so the voice catches.",
+      "watchFor": "Tongue holds still while the throat pinches the sound.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "l",
+      "letter": "l",
+      "ipa": "l",
+      "category": "resonants",
+      "glottalized": false,
+      "howTo": "Tongue tip on the ridge behind the upper teeth, voice flowing out around the sides of the tongue.",
+      "watchFor": "Tongue tip visible against the teeth ridge.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "l-glot",
+      "letter": "l̓",
+      "ipa": "lˀ",
+      "category": "resonants",
+      "glottalized": true,
+      "howTo": "Make the l sound with a catch in the throat partway through.",
+      "watchFor": "The tongue never leaves the ridge.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "r",
+      "letter": "r",
+      "ipa": "r",
+      "category": "resonants",
+      "glottalized": false,
+      "howTo": "Voiced r made with the tongue tip toward the ridge behind the teeth. It is not the English r — ask your teacher to show the tongue position.",
+      "watchFor": "Watch the tongue tip closely; this one is easy to substitute an English sound for.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "r-glot",
+      "letter": "r̓",
+      "ipa": "rˀ",
+      "category": "resonants",
+      "glottalized": true,
+      "howTo": "Make the r sound with a catch in the throat partway through.",
+      "watchFor": "Tongue position holds while the throat pinches.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "w",
+      "letter": "w",
+      "ipa": "w",
+      "category": "resonants",
+      "glottalized": false,
+      "howTo": "Round the lips tightly and raise the back of the tongue, then glide into the next sound, as in \"water\".",
+      "watchFor": "Tight lip rounding at the start.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "w-glot",
+      "letter": "w̓",
+      "ipa": "wˀ",
+      "category": "resonants",
+      "glottalized": true,
+      "howTo": "Make the rounded w with a catch in the throat during it.",
+      "watchFor": "Lips hold their round shape through the catch.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "y",
+      "letter": "y",
+      "ipa": "j",
+      "category": "resonants",
+      "glottalized": false,
+      "howTo": "Raise the front of the tongue toward the roof of the mouth and glide, as in \"yes\".",
+      "watchFor": "Lips spread wide, tongue high in front.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "y-glot",
+      "letter": "y̓",
+      "ipa": "jˀ",
+      "category": "resonants",
+      "glottalized": true,
+      "howTo": "Make the y glide with a catch in the throat during it.",
+      "watchFor": "Spread lips held through the catch.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "ain",
+      "letter": "ʕ",
+      "ipa": "ʕ",
+      "category": "resonants",
+      "glottalized": false,
+      "howTo": "Tighten the very back of the throat — the pharynx — and keep your voice going through it. It has a squeezed, growly quality.",
+      "watchFor": "Little happens at the lips; watch the throat and the jaw dropping.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "ain-glot",
+      "letter": "ʕ̓",
+      "ipa": "ʕˀ",
+      "category": "resonants",
+      "glottalized": true,
+      "howTo": "Make the squeezed throat sound with a catch in the middle of it.",
+      "watchFor": "The throat tightens twice — once for the sound, once for the catch.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "ainw",
+      "letter": "ʕʷ",
+      "ipa": "ʕʷ",
+      "category": "resonants",
+      "glottalized": false,
+      "howTo": "Make the squeezed throat sound while rounding the lips at the same time.",
+      "watchFor": "Rounded lips with the growly throat sound behind them.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "ainw-glot",
+      "letter": "ʕ̓ʷ",
+      "ipa": "ʕʷˀ",
+      "category": "resonants",
+      "glottalized": true,
+      "howTo": "Rounded lips, squeezed throat, and a catch in the middle of the sound.",
+      "watchFor": "Rounding held through the catch.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "a",
+      "letter": "a",
+      "ipa": "a",
+      "category": "vowels",
+      "glottalized": false,
+      "howTo": "Open the mouth wide and drop the tongue low, like the a in \"father\".",
+      "watchFor": "The jaw drops farthest for this vowel.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "e",
+      "letter": "e",
+      "ipa": "e",
+      "category": "vowels",
+      "glottalized": false,
+      "howTo": "Front of the tongue mid-high, lips spread, like the e in \"bet\" held steady.",
+      "watchFor": "Lips spread, jaw only part way open.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "i",
+      "letter": "i",
+      "ipa": "i",
+      "category": "vowels",
+      "glottalized": false,
+      "howTo": "Front of the tongue high and lips spread wide, like the ee in \"see\".",
+      "watchFor": "Widest lip spread, smallest jaw opening.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "o",
+      "letter": "o",
+      "ipa": "o",
+      "category": "vowels",
+      "glottalized": false,
+      "howTo": "Back of the tongue mid-high with rounded lips, like the o in \"go\" held steady without gliding.",
+      "watchFor": "Round lips that do not change shape partway through.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "u",
+      "letter": "u",
+      "ipa": "u",
+      "category": "vowels",
+      "glottalized": false,
+      "howTo": "Back of the tongue high with tightly rounded lips, like the oo in \"boot\".",
+      "watchFor": "Tightest lip rounding of all the vowels.",
+      "example": { "salish": "", "english": "" }
+    },
+    {
+      "id": "schwa",
+      "letter": "ə",
+      "ipa": "ə",
+      "category": "vowels",
+      "glottalized": false,
+      "howTo": "A short, relaxed vowel made with the tongue resting in the middle of the mouth — the uh in \"sofa\".",
+      "watchFor": "The mouth barely moves; this vowel is quick and unstressed.",
+      "example": { "salish": "", "english": "" }
+    }
+  ]
+}
