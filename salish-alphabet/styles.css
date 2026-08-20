@@ -37,8 +37,12 @@
                  "Brill", "Lucida Sans Unicode", "Segoe UI", "DejaVu Sans", sans-serif;
 }
 
+/* Dark palette in three places, because a viewer has three states: an explicit
+   light choice, an explicit dark choice, and no choice at all (the default,
+   where only the OS setting speaks). An explicit choice must beat the OS. */
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #171310;
     --surface: #221c17;
     --ink: #f3ece2;
@@ -50,6 +54,19 @@
     --focus: #79b8f0;
     --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 6px 18px rgba(0, 0, 0, .3);
   }
+}
+
+:root[data-theme="dark"] {
+  --bg: #171310;
+  --surface: #221c17;
+  --ink: #f3ece2;
+  --ink-soft: #bdb0a1;
+  --line: #3b322a;
+  --accent: #e0a877;
+  --accent-soft: #35291f;
+  --accent-ink: #1a140f;
+  --focus: #79b8f0;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 6px 18px rgba(0, 0, 0, .3);
 }
 
 * { box-sizing: border-box; }
