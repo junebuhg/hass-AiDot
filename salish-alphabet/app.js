@@ -21,6 +21,7 @@ const state = {
   byId: new Map(),
   category: 'all',
   query: '',
+  view: 'category',   // 'category' = by sound type, 'level' = by teaching sequence
   visible: [],   // ids currently shown in the grid, in display order
   rate: 1,
   loop: true
@@ -43,7 +44,9 @@ async function init() {
   state.data.letters.forEach((l) => state.byId.set(l.id, l));
 
   renderReviewBanner();
+  renderSourceNote();
   renderFilters();
+  renderViewToggle();
   renderGrid();
   wireControls();
 
@@ -66,6 +69,37 @@ function showLoadError(err) {
 
 function renderReviewBanner() {
   if (state.data.reviewStatus) el('review-banner').textContent = state.data.reviewStatus;
+}
+
+function renderSourceNote() {
+  const src = state.data.source;
+  if (!src || !src.name) return;
+  const name = src.url
+    ? `<a href="${escapeHtml(src.url)}" rel="noopener">${escapeHtml(src.name)}</a>`
+    : escapeHtml(src.name);
+  el('source-note').innerHTML =
+    `Alphabet and teaching order from ${name}.` +
+    (src.note ? ` ${escapeHtml(src.note)}` : '');
+}
+
+/* The teaching-order view only appears once the data file actually carries a
+   sequence, so it stays out of the way until the curriculum order is filled in. */
+function hasSequence() {
+  return state.data.letters.some((l) => l.level != null || l.order != null);
+}
+
+function renderViewToggle() {
+  const toggle = el('viewmode');
+  if (!toggle || !hasSequence()) return;
+  toggle.hidden = false;
+  toggle.addEventListener('click', (e) => {
+    const btn = e.target.closest('.chip');
+    if (!btn) return;
+    state.view = btn.dataset.view;
+    [...toggle.children].forEach((c) =>
+      c.setAttribute('aria-pressed', String(c.dataset.view === state.view)));
+    renderGrid();
+  });
 }
 
 /* ------------------------------------------------------------------ grid */
@@ -101,19 +135,18 @@ function renderGrid() {
   container.innerHTML = '';
   state.visible = [];
 
-  for (const cat of state.data.categories) {
-    const letters = state.data.letters.filter((l) => l.category === cat.id && matches(l));
-    if (!letters.length) continue;
+  const groups = state.view === 'level' ? levelGroups() : categoryGroups();
 
-    state.visible.push(...letters.map((l) => l.id));
+  for (const g of groups) {
+    state.visible.push(...g.letters.map((l) => l.id));
 
     const group = document.createElement('section');
     group.className = 'group';
     group.innerHTML = `
-      <h2>${escapeHtml(cat.name)}</h2>
-      <p class="group-desc">${escapeHtml(cat.description || '')}</p>
+      <h2>${escapeHtml(g.name)}</h2>
+      <p class="group-desc">${escapeHtml(g.description || '')}</p>
       <div class="grid">
-        ${letters.map(tileHtml).join('')}
+        ${g.letters.map(tileHtml).join('')}
       </div>`;
     container.appendChild(group);
   }
@@ -124,6 +157,59 @@ function renderGrid() {
     const tile = e.target.closest('.tile');
     if (tile) location.hash = `#/letter/${encodeURIComponent(tile.dataset.id)}`;
   };
+}
+
+function categoryGroups() {
+  return state.data.categories
+    .map((cat) => ({
+      name: cat.name,
+      description: cat.description,
+      letters: state.data.letters.filter((l) => l.category === cat.id && matches(l))
+    }))
+    .filter((g) => g.letters.length);
+}
+
+/* Group by the curriculum's level, ordered by each letter's `order` within it.
+   Letters with no level set collect at the end rather than disappearing. */
+function levelGroups() {
+  const meta = new Map((state.data.levels || []).map((lv) => [String(lv.id), lv]));
+  const buckets = new Map();
+
+  for (const letter of state.data.letters) {
+    if (!matches(letter)) continue;
+    const key = letter.level == null ? '' : String(letter.level);
+    if (!buckets.has(key)) buckets.set(key, []);
+    buckets.get(key).push(letter);
+  }
+
+  return [...buckets.keys()]
+    .sort(compareLevelKeys)
+    .map((key) => {
+      const lv = meta.get(key);
+      const letters = buckets.get(key).sort((a, b) => orderOf(a) - orderOf(b));
+      return {
+        name: key === '' ? 'Not yet sequenced' : (lv ? lv.name : `Level ${key}`),
+        description: key === ''
+          ? 'These letters have no teaching order set in data/alphabet.json yet.'
+          : (lv ? lv.description : ''),
+        letters
+      };
+    })
+    .filter((g) => g.letters.length);
+}
+
+function orderOf(letter) {
+  return letter.order == null ? Number.MAX_SAFE_INTEGER : Number(letter.order);
+}
+
+function compareLevelKeys(a, b) {
+  if (a === b) return 0;
+  if (a === '') return 1;    // unsequenced always last
+  if (b === '') return -1;
+  const na = Number(a);
+  const nb = Number(b);
+  if (!Number.isNaN(na) && !Number.isNaN(nb)) return na - nb;
+  return a.localeCompare(b);
 }
 
 function tileHtml(letter) {
@@ -161,8 +247,11 @@ function showDetail(letter) {
   el('detail-ipa').textContent = `IPA [${letter.ipa}]`;
 
   const cat = state.data.categories.find((c) => c.id === letter.category);
-  el('detail-category').textContent =
-    (cat ? cat.name : letter.category) + (letter.glottalized ? ' · glottalized' : '');
+  const levelMeta = (state.data.levels || []).find((lv) => String(lv.id) === String(letter.level));
+  const bits = [cat ? cat.name : letter.category];
+  if (letter.glottalized) bits.push('glottalized');
+  if (letter.level != null) bits.push(levelMeta ? levelMeta.name : `Level ${letter.level}`);
+  el('detail-category').textContent = bits.join(' · ');
 
   const ex = el('detail-example');
   if (letter.example && letter.example.salish) {

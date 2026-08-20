@@ -55,6 +55,8 @@ Each entry looks like this:
   "letter": "q̓",
   "ipa": "qʼ",
   "category": "stops",
+  "level": null,
+  "order": null,
   "glottalized": true,
   "howTo": "Make the deep q closure, close the throat below it, squeeze, and release with a sharp pop.",
   "watchFor": "The whole throat lifts before the release.",
@@ -65,16 +67,53 @@ Each entry looks like this:
 - `id` — ASCII slug used for the video filenames. Changing it means renaming the
   video files to match, so pick these once and leave them alone.
 - `category` — must match one of the `categories` ids at the top of the file.
+- `level` / `order` — where the letter falls in the teaching sequence. See below.
 - `glottalized` — draws the marker bar under the tile.
 - `example` — left empty on purpose (see below). Fill in `salish` and `english`
   and the word appears on the letter's page.
 
+### Teaching order
+
+By default the grid is arranged by sound type, which is how a linguist thinks
+about an alphabet. A curriculum introduces letters in a different order — the
+order the lessons teach them in.
+
+Set `level` and `order` on the letters, and describe the levels at the top of the
+data file:
+
+```json
+"levels": [
+  { "id": 1, "name": "Level 1", "description": "Sounds introduced in the first unit." }
+]
+```
+
+A **Teaching order** toggle then appears next to the group filters, arranging the
+grid by level instead, and the previous/next arrows on a letter page follow the
+lesson sequence rather than the alphabet. Letters you have not sequenced yet
+gather in a "Not yet sequenced" group at the end instead of vanishing.
+
+The toggle stays hidden while no letter has a `level` or `order`, so the app is
+uncluttered until the sequence is actually filled in.
+
+### Crediting the source
+
+Fill in `source` at the top of the data file and the attribution shows in the
+page footer:
+
+```json
+"source": {
+  "name": "ILFTS",
+  "url": "https://ilfts.org/",
+  "note": "Used with permission."
+}
+```
+
 ### Before this is used with learners
 
-The letter list in `data/alphabet.json` was assembled from published descriptions
-of the Montana Salish sound system, **not** from Séliš-Ql̓ispé Culture Committee
-materials. It has not been checked by a fluent speaker. The linguist should
-confirm, at minimum:
+The letter list in `data/alphabet.json` is a **placeholder**, assembled from
+published descriptions of the Montana Salish sound system. It is meant to be
+replaced by the Séliš-Ql̓ispé alphabet as taught in the ILFTS curriculum. Until
+that swap happens, the linguist should confirm, at minimum:
 
 - [ ] Which letters belong in the alphabet, and whether any here do not
 - [ ] The teaching order the letters should appear in
@@ -104,7 +143,8 @@ put the `.woff2` files in `salish-alphabet/fonts/`, and uncomment the
 
 ## What the app does
 
-- Letter grid, grouped by sound type, with search and group filters
+- Letter grid, grouped by sound type or by curriculum level, with search and
+  group filters
 - A page per letter: large glyph, IPA, how-to-make-it description, what to watch
   for, and both speakers' clips side by side
 - Playback at normal, 1/2, and 1/4 speed, applied to both clips at once, plus

@@ -26,6 +26,10 @@
         <input type="search" id="search" placeholder="Search a letter or sound…" autocomplete="off" spellcheck="false">
       </label>
       <div class="filters" id="filters" role="group" aria-label="Filter by group"></div>
+      <div class="viewmode" id="viewmode" role="group" aria-label="Arrange letters" hidden>
+        <button type="button" class="chip" data-view="category" aria-pressed="true">Sound groups</button>
+        <button type="button" class="chip" data-view="level" aria-pressed="false">Teaching order</button>
+      </div>
     </div>
 
     <div id="grid-groups"></div>
@@ -76,6 +80,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <p id="review-banner" class="review-banner"></p>
+    <p id="source-note" class="source-note"></p>
     <p class="credit">Made for Séliš-Ql̓ispé language learners. Video clips are the property of the speakers and the community.</p>
   </div>
 </footer>

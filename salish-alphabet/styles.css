@@ -127,6 +127,15 @@ body {
 
 .filters { display: flex; flex-wrap: wrap; gap: .5rem; }
 
+.viewmode {
+  display: flex;
+  gap: .5rem;
+  padding-inline-start: .5rem;
+  border-inline-start: 1px solid var(--line);
+}
+
+.viewmode[hidden] { display: none; }
+
 .chip {
   font: inherit;
   font-size: .9rem;
@@ -382,6 +391,10 @@ body {
 }
 
 .review-banner:empty { display: none; }
+
+.source-note { margin: 0 0 .5rem; }
+.source-note:empty { display: none; }
+.source-note a { color: inherit; }
 .credit { margin: 0; }
 
 @media (prefers-reduced-motion: reduce) {
