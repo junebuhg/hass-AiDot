@@ -32,13 +32,19 @@ const el = (id) => document.getElementById(id);
 /* ------------------------------------------------------------------ load */
 
 async function init() {
-  try {
-    const res = await fetch('data/alphabet.json', { cache: 'no-cache' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    state.data = await res.json();
-  } catch (err) {
-    showLoadError(err);
-    return;
+  // The single-file build (see tools/build_standalone.py) inlines the data so
+  // the app works straight off the filesystem, with no server and no network.
+  if (window.__ALPHABET__) {
+    state.data = window.__ALPHABET__;
+  } else {
+    try {
+      const res = await fetch('data/alphabet.json', { cache: 'no-cache' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      state.data = await res.json();
+    } catch (err) {
+      showLoadError(err);
+      return;
+    }
   }
 
   state.data.letters.forEach((l) => state.byId.set(l.id, l));

@@ -44,6 +44,19 @@ full URLs in the data file instead. Git also keeps every version of a binary
 file forever, so re-committing recut videos repeatedly will bloat the repository;
 prefer to get a clip right before committing it.
 
+## A single file you can hand to someone
+
+```
+python3 tools/build_standalone.py
+```
+
+writes `standalone.html` with the CSS, the JavaScript, and the alphabet data all
+inlined. That file opens by double-clicking it — no server, no network — so it
+travels well on a USB stick or as an email attachment. Keep a `videos/` folder
+beside it and the clips play from there.
+
+Rebuild it after any change to the data file; it is a snapshot, not a live view.
+
 ## Adding the videos
 
 Put the clips in `videos/` named `<letter id>-female.mp4` and
@@ -182,7 +195,9 @@ salish-alphabet/
 ├── app.js
 ├── data/alphabet.json      ← all content lives here
 ├── videos/                 ← clips go here; README lists every filename
-└── tools/check_media.py    ← which clips are recorded, which are missing
+└── tools/
+    ├── check_media.py      ← which clips are recorded, which are missing
+    └── build_standalone.py ← bundles the app into one openable HTML file
 ```
 
 ## A note on ownership
